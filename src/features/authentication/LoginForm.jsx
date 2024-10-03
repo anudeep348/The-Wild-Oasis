@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useLogin } from "./useLogin";
 
@@ -7,11 +7,22 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import SpinnerMini from "../../ui/SpinnerMini";
+import toast from "react-hot-toast";
 
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("chowdary@gmail.com");
+  const [password, setPassword] = useState("Anudeep.3");
   const { login, isLoading } = useLogin();
+
+  useEffect(() => {
+    toast(
+      "The provided credentials can be used to have a look at the website",
+      {
+        icon: "ℹ️",
+        duration: 7000,
+      }
+    );
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
